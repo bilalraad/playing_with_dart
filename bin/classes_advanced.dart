@@ -1,5 +1,5 @@
 void main() {
-  Animal ani = Animal();
+  Animal ani = Animal('marry', 2, sound: 'meow');
   ani.name = 'cat';
   ani.age = 2;
   ani.sound = 'meow';
@@ -14,9 +14,11 @@ void main() {
 
 class Animal {
   //class properties
-  late String name;
-  late double age;
-  late String sound;
+  String name;
+  double age;
+  String sound;
+
+  Animal(this.name, this.age, {required this.sound});
 
   void walk() {
     print("walking...");
@@ -24,20 +26,16 @@ class Animal {
 }
 
 class Cat extends Animal {
-  late String breed;
-  late String color;
+  String breed;
+  String color;
   //contructor
   Cat({
     this.breed = 'russian',
     this.color = 'grey',
     required double age,
     required String name,
-  }) {
     //super keyword to access the parent class
-    super.name = name;
-    super.age = age;
-    super.sound = 'meow';
-  }
+  }) : super(name, age, sound: 'meow');
 
   String sayHi() {
     return sound;
